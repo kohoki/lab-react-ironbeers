@@ -27,12 +27,13 @@ function Beers() {
         {beers.map((beer) =>
         {
           return(
-            <Link key= {beer._id} to="/" style={{textDecoration: 'none',color: 'inherit', marginBottom: '50px'}}>
+            <Link key= {beer._id} to={`/${beer._id}`} style={{textDecoration: 'none',color: 'inherit', marginBottom: '50px'}}>
             <div className="card" style={{width: '18rem'}}>
                 <img src={beer.image_url} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{beer.name}</h5>
-                    <p className="card-text">{beer.description}</p>
+                    <p className="card-text">{beer.tagline}</p>
+                    <p>{beer.contributed_by}</p>
                 </div>
             </div>
           </Link>

@@ -4,6 +4,8 @@ import Home from './components/Home';
 import Beers from './components/Beers';
 import RandomBeer from './components/RandomBeer';
 import NewBeer from './components/NewBeer';
+import Details from './components/Details';
+
 
 function App() {
   return (
@@ -25,6 +27,10 @@ function App() {
           <Route
           path="/new-beer"
           element={<NewBeer />}/>
+          
+          <Route 
+          path="/:id" 
+          element={ <Details /> } />
 
         </Routes>
     </div>
