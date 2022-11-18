@@ -1,8 +1,13 @@
 import React from 'react'
+import NavBar from './NavBar'
+
 
 function Beers() {
   return (
-    <div>Beers</div>
+    <div className="container" style={{marginTop: '50px'}}>
+      <NavBar/>
+      <p>Textasas as</p>
+    </div>
   )
 }
 
