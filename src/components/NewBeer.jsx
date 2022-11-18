@@ -1,7 +1,7 @@
 import NavBar from './NavBar'
-import { useParams, Link} from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 function NewBeer() {
 
@@ -12,24 +12,31 @@ function NewBeer() {
   const [brewers_tips, setNewBrewers_tips] = useState('')
   const [attenuation_level, setNewAttenuation_level] = useState(0)
   const [contributed_by, setNewContributed_by] = useState('')
+  const navigate = useNavigate();
   
 
-  const handleSubmit = event =>{
-        
-    event.preventDefault();
-    const NewBeer = {name, tagline, description, first_brewed, brewers_tips, attenuation_level, contributed_by}
-    console.log(NewBeer)
-    
-    setNewName('')
-    setNewTagline('')
-    setNewDescription('')
-    setNewFirst_brewed('')
-    setNewBrewers_tips('')
-    setNewAttenuation_level(0)
-    setNewContributed_by('')
+  const handleSubmit = async (event) =>{
+    try {
+      event.preventDefault();
+      const NewBeer = {name, tagline, description, first_brewed, brewers_tips, attenuation_level, contributed_by}
+      console.log(NewBeer)
+
+      await axios.post("https://ih-beers-api2.herokuapp.com/beers/new", NewBeer)
+      
+      setNewName('')
+      setNewTagline('')
+      setNewDescription('')
+      setNewFirst_brewed('')
+      setNewBrewers_tips('')
+      setNewAttenuation_level(0)
+      setNewContributed_by('')
+
+      navigate("/")
+
+    } catch (error) {
+      console.log(error);
+    }  
 }  
-
-
   return (
     <div className="container" style={{marginTop: '50px', width: '60%'}}>
 
